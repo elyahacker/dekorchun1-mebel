@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dekorchu | Sənin Sənət Əsərin</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-premium: linear-gradient(135deg, #fdfaf7 0%, #f2ece4 100%);
+            --accent: #b08d75;
+            --onyx: #1a1a1a;
+            --glass: rgba(255, 255, 255, 0.85);
+            --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-premium);
+            color: var(--onyx);
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ─── NAVBAR ─── */
+        .navbar {
+            padding: 1rem 1.5rem;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: var(--transition);
+            width: 90%;
+            margin: 20px auto;
+            border-radius: 50px;
+            border: 1px solid rgba(176, 141, 117, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar.scrolled {
+            padding: 0.6rem 1.5rem;
+            width: 95%;
+            margin: 10px auto;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            letter-spacing: 2px;
+            color: var(--onyx) !important;
+            font-size: 1.6rem;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 1px solid var(--accent);
+            background-color: white;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled .brand-logo {
+            height: 40px;
+            width: 40px;
+        }
+
+        .text-bronze {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--onyx) !important;
+            opacity: 0.6;
+            transition: 0.3s;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            opacity: 1;
+            color: var(--accent) !important;
+        }
+
+        /* ─── HERO SLIDER ─── */
+        .hero-title {
+            font-size: clamp(2.2rem, 10vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .carousel-item {
+            height: 100vh;
+            min-height: 600px;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+        .carousel-caption {
+            bottom: 25%;
+            text-align: left !important;
+            left: 10% !important;
+            max-width: 800px;
+        }
+
+        /* ─── PRODUCT CARDS ─── */
+        .product-frame {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            border-radius: 20px;
+            padding: 15px;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
+            height: 100%;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img-wrapper {
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            margin-bottom: 15px;
+        }
+
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-frame:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+
+        .product-frame:hover .product-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        /* Quick-order overlay on product card */
+        .product-overlay {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            right: 0;
+            padding: 12px;
+            text-align: center;
+            transition: 0.4s ease;
+        }
+
+        .product-frame:hover .product-overlay {
+            bottom: 12px;
+        }
+
+        .btn-order {
+            background: var(--onyx);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 8px 24px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .btn-order:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: #080808;
+            color: #777;
+            padding: 100px 0 40px;
+        }
+
+        .footer-title {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 35px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .footer-link {
+            color: #777;
+            text-decoration: none;
+            transition: 0.3s;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+            padding-left: 8px;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 15px;
+            transition: 0.4s;
+        }
+
+        .social-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ─── WHATSAPP BUTTON ─── */
+        .whatsapp-button {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-button:hover {
+            transform: translateY(-10px);
+            color: white;
+            background-color: #20b858;
+        }
+
+        /* Pulse ring animation */
+        .whatsapp-button::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(37, 211, 102, 0.5);
+            animation: wpulse 2s infinite;
+        }
+
+        @keyframes wpulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+
+            70% {
+                transform: scale(1.7);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1.7);
+                opacity: 0;
+            }
+        }
+
+        /* ─── BACK TO TOP ─── */
+        #backToTop {
+            position: fixed;
+            right: 30px;
+            bottom: 105px;
+            width: 46px;
+            height: 46px;
+            background: var(--onyx);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.4s;
+            z-index: 9998;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #backToTop.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #backToTop:hover {
+            background: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        /* ─── SCROLL REVEAL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ─── TESTIMONIALS ─── */
+        #testimonials {
+            background: linear-gradient(160deg, #fdfaf7 0%, #f5ede4 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #testimonials::before {
+            content: '\201C';
+            font-family: 'Playfair Display', serif;
+            font-size: 30rem;
+            color: rgba(176, 141, 117, 0.05);
+            position: absolute;
+            top: -80px;
+            left: -30px;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 36px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(176, 141, 117, 0.1);
+            height: 100%;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.09);
+            border-color: var(--accent);
+        }
+
+        .testimonial-card .quote-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #d4a27a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .author-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--onyx);
+            margin: 0;
+        }
+
+        .author-location {
+            font-size: 0.78rem;
+            color: #999;
+            margin: 0;
+        }
+
+        .star-rating {
+            color: #f5b942;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+
+        /* Rating summary bar */
+        .rating-summary {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(176, 141, 117, 0.1);
+            text-align: center;
+        }
+
+        .big-rating {
+            font-size: 5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: var(--onyx);
+            line-height: 1;
+        }
+
+        .rating-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .rating-bar-label {
+            font-size: 0.75rem;
+            color: #888;
+            min-width: 20px;
+        }
+
+        .rating-bar-bg {
+            flex: 1;
+            height: 6px;
+            background: #f0ebe6;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .rating-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #b08d75, #d4a27a);
+            border-radius: 10px;
+            transition: width 1.5s ease;
+        }
+
+        /* ─── FAQ ─── */
+        #faq {
+            padding: 100px 0;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(176, 141, 117, 0.3);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 22px 28px;
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--onyx);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .faq-question:hover {
+            color: var(--accent);
+        }
+
+        .faq-question.open {
+            color: var(--accent);
+        }
+
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #f5ede4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            transition: 0.4s;
+            color: var(--accent);
+        }
+
+        .faq-question.open .faq-icon {
+            transform: rotate(45deg);
+            background: var(--accent);
+            color: white;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease, padding 0.3s;
+            padding: 0 28px;
+        }
+
+        .faq-answer.open {
+            max-height: 300px;
+            padding: 0 28px 22px;
+        }
+
+        .faq-answer p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* ─── ORDER MODAL ─── */
+        .modal-content {
+            border: none;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: white;
+            border: none;
+            padding: 28px 32px;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        .modal-body {
+            padding: 32px;
+        }
+
+        .modal-form .form-control {
+            background: #f8f5f2;
+            border: 1px solid rgba(176, 141, 117, 0.15);
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .modal-form .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(176, 141, 117, 0.15);
+            background: white;
+        }
+
+        .btn-submit-order {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 14px 32px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit-order:hover {
+            background: linear-gradient(135deg, var(--accent), #d4a27a);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(176, 141, 117, 0.4);
+        }
+
+        /* ─── TOAST NOTIFICATION ─── */
+        #consultToast {
+            position: fixed;
+            bottom: 110px;
+            left: 30px;
+            background: white;
+            border-radius: 18px;
+            padding: 18px 24px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-left: 4px solid var(--accent);
+            z-index: 9997;
+            max-width: 280px;
+            transform: translateX(-120%);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        #consultToast.show {
+            transform: translateX(0);
+        }
+
+        #consultToast .toast-title {
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: var(--onyx);
+            margin-bottom: 4px;
+        }
+
+        #consultToast .toast-text {
+            font-size: 0.78rem;
+            color: #888;
+            margin: 0;
+        }
+
+        #consultToast .toast-close {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #bbb;
+            font-size: 1rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* ─── SECTION DIVIDER ─── */
+        .section-divider {
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+            margin: 0 auto;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 991px) {
+            .navbar {
+                width: 95%;
+                padding: 0.5rem 1.2rem;
+                margin: 10px auto;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .brand-logo {
+                height: 60px;
+                width: 60px;
+            }
+
+            .navbar-brand {
+                font-size: 1.3rem;
+                letter-spacing: 2px;
+            }
+
+            .navbar-collapse {
+                background: white;
+                margin-top: 15px;
+                padding: 20px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            #testimonials::before {
+                font-size: 15rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .carousel-caption {
+                left: 5% !important;
+                right: 5% !important;
+                bottom: 15% !important;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="2000">
+
+    <!-- ─── NAVBAR ─── -->
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <img src="logo.jpeg" alt="Dekorchu" class="brand-logo">
+                Dekorchu<span class="text-bronze"></span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-2"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Ana Səhifə</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Hekayəmiz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#catalog">Mebel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#guzgu">Güzgü</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sebeke">Şəbəkə</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ─── HERO SLIDER ─── -->
+    <header id="home" id="heroSlider" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner" data-bs-interval="2000">
+            <div class="carousel-item active">
+                <img src="photo2.png" class="carousel-img" alt="Mebel 1">
+
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Sakitliyin <br><span class="text-bronze">Yeni Forması.</span></h1>
+                    <p class="lead opacity-75">Hər məkan bir şah əsərinə dönür — sadəcə düzgün mebel seçin.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="photo3.png" class="carousel-img" alt="Mebel 2">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Ev Sənin <br><span class="text-bronze">Dünyandır.</span></h1>
+                    <p class="lead opacity-75">Evinizin hər küncü sizin xarakterinizi əks etdirsin.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="photo6.png" class="carousel-img" alt="Mebel 3">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Lüks Artıq <br><span class="text-bronze">Əlçatandır.</span></h1>
+                    <p class="lead opacity-75">Premium keyfiyyət, əlçatan qiymət — bu bizim vədimizdir.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="photo7.png" class="carousel-img" alt="Mebel 4">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Zövqlə <br><span class="text-bronze">Yaradılmış.</span></h1>
+                    <p class="lead opacity-75">Hər detal əl ilə işlənir, hər ölçü sizin üçün götürülür.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="photo5.png" class="carousel-img" alt="Mebel 5">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Klassik <br><span class="text-bronze">Elegantlıq.</span></h1>
+                    <p class="lead opacity-75">Zamanın sınağından çıxmış dizayn, bu günün zövqü ilə birləşir.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="photo1.png" class="carousel-img" alt="Mebel 6">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Zövq <br><span class="text-bronze">Təsadüf Deyil.</span></h1>
+                    <p class="lead opacity-75">Hər detal düşünülmüş, hər forma sizin üçün seçilmişdir.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="photo10.png" class="carousel-img" alt="Mebel 7">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Yaşamaq da <br><span class="text-bronze">Bir Sənətdir.</span></h1>
+                    <p class="lead opacity-75">Sizə yalnız ən layiqli məkanı qurmağa kömək edirik.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="photo8.png" class="carousel-img" alt="Mebel 8">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Keyfiyyətin <br><span class="text-bronze">Görünən Üzü.</span></h1>
+                    <p class="lead opacity-75">Yalnız gözəl deyil — onillər boyu yanınızda qalacaq möhkəmlikdə.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="photo9.png" class="carousel-img" alt="Mebel 9">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Sizdən Əvvəl <br><span class="text-bronze">Düşündük.</span></h1>
+                    <p class="lead opacity-75">Hər forma, hər material — sizin rahatlığınız üçün hesablanıb.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="photo4.png" class="carousel-img" alt="Mebel 10">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">Stil Qiymət Deyil, <br><span class="text-bronze">Düşüncədir.</span></h1>
+                    <p class="lead opacity-75">Ən gözəl məkanlar ən baha deyil — ən düzgün seçimlə yaranır.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="photo11.png" class="carousel-img" alt="Mebel 10">
+                <div class="carousel-caption">
+                    <h1 class="hero-title">İlk Baxışdan<br><span class="text-bronze">Aşiq Olursunuz.</span></h1>
+                    <p class="lead opacity-75">Çünki gözəl dizayn heç vaxt izahat tələb etmir.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ─── ABOUT ─── -->
+    <section id="about" class="py-5 mt-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 reveal-left">
+                    <h2 class="display-4 fw-bold mb-4">Hekayəmiz</h2>
+                    <p class="text-muted mb-4">2011-ci ildən bəri biz ağacın ruhunu hiss edərək onu evinizin ən dəyərli
+                        küncünə çeviririk. Bizim üçün keyfiyyət sadəcə standart deyil, bir həyat tərzidir.</p>
+                    <div class="d-flex gap-4 mt-5">
+                        <div>
+                            <h3 class="fw-bold m-0 text-bronze counter" data-target="15">0</h3><small
+                                class="text-muted">İllik Təcrübə</small>
+                        </div>
+                        <div class="vr"></div>
+                        <div>
+                            <h3 class="fw-bold m-0 text-bronze counter" data-target="1500">0</h3><small
+                                class="text-muted">Məmnun Müştəri</small>
+                        </div>
+                        <div class="vr"></div>
+                        <div>
+                            <h3 class="fw-bold m-0 text-bronze counter" data-target="98">0</h3><small
+                                class="text-muted">% Məmnuniyyət</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1 reveal-right">
+                    <div class="product-frame mt-4 mt-lg-0">
+                        <img src="sekil1.png" class="img-fluid rounded-4 shadow-sm" alt="Hekayə">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CATALOG ─── -->
+    <section id="catalog" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5 reveal">
+                <h2 class="display-3 fw-bold">Eksklüziv Kataloq</h2>
+                <br>
+                <h2 class="display-5 fw-bold" style="color: #b08d75;">Mebel</h2>
+                <div class="section-divider mt-3"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Mətbəx')">
+                        <div class="product-img-wrapper"><img src="metbex2.png" alt="Mətbəx"></div>
+                        <h5 class="fw-bold">Mətbəx</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Yataq Dəsti')">
+                        <div class="product-img-wrapper"><img src="yataq.png" alt="Yataq"></div>
+                        <h5 class="fw-bold">Yataq Dəsti</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Qonaq Dəsti')">
+                        <div class="product-img-wrapper"><img src="qonaqotagi.png" alt="Qonaq"></div>
+                        <h5 class="fw-bold">Qonaq Dəsti</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Uşaq Mebeli')">
+                        <div class="product-img-wrapper"><img src="usaqotagi.png" alt="Uşaq"></div>
+                        <h5 class="fw-bold">Uşaq Mebeli</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('TV Stendi')">
+                        <div class="product-img-wrapper"><img src="tv.png" alt="TV"></div>
+                        <h5 class="fw-bold">TV Stendi</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Qarderob')">
+                        <div class="product-img-wrapper"><img src="qarderob.png" alt="Qarderob"></div>
+                        <h5 class="fw-bold">Qarderob</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Qapı')">
+                        <div class="product-img-wrapper"><img src="qapi.png" alt="Qapı"></div>
+                        <h5 class="fw-bold">Qapı</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Divan')">
+                        <div class="product-img-wrapper"><img src="divan.png" alt="Divan"></div>
+                        <h5 class="fw-bold">Divan</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Puff')">
+                        <div class="product-img-wrapper"><img src="puff.png" alt="Puff"></div>
+                        <h5 class="fw-bold">Puff</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Jurnalni')">
+                        <div class="product-img-wrapper"><img src="jurnalni.png" alt="Jurnalni"></div>
+                        <h5 class="fw-bold">Jurnalni</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Gözəllik Salonu')">
+                        <div class="product-img-wrapper"><img src="salon.png" alt="Gözəllik"></div>
+                        <h5 class="fw-bold">Gözəllik Salonu</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Moydadır')">
+                        <div class="product-img-wrapper"><img src="moydadir.png" alt="Moydadır"></div>
+                        <h5 class="fw-bold">Moydadır</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Moydadır')">
+                        <div class="product-img-wrapper"><img src="stol.png" alt="Moydadır"></div>
+                        <h5 class="fw-bold">Stol</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- guzgu -->
+
+    <section id="guzgu" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5 reveal">
+                <h2 class="display-5 fw-bold" style="color: #b08d75;" id="guzgu">Güzgü</h2>
+                <div class="section-divider mt-3"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Mətbəx')">
+                        <div class="product-img-wrapper"><img src="divarguzgu2.png" alt="divar"></div>
+                        <h5 class="fw-bold">Divar Güzgüsü</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Yataq Dəsti')">
+                        <div class="product-img-wrapper"><img src="tavanguzgu2.png" alt="Yataq"></div>
+                        <h5 class="fw-bold">Tavan Güzgüsü</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Qonaq Dəsti')">
+                        <div class="product-img-wrapper"><img src="boyguzgu.png" alt="Qonaq"></div>
+                        <h5 class="fw-bold">Boy Güzgüsü</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Uşaq Mebeli')">
+                        <div class="product-img-wrapper"><img src="makeup.png" alt="Uşaq"></div>
+                        <h5 class="fw-bold">Makeup Güzgüsü</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('TV Stendi')">
+                        <div class="product-img-wrapper"><img src="isiqli2.png" alt="TV"></div>
+                        <h5 class="fw-bold">İşıqlı Boy Güzgüsü</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Qarderob')">
+                        <div class="product-img-wrapper"><img src="console.png" alt="Qarderob"></div>
+                        <h5 class="fw-bold">Console</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Qapı')">
+                        <div class="product-img-wrapper"><img src="dekorguzgu.png" alt="Qapı"></div>
+                        <h5 class="fw-bold">Dekor Güzgüsü</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Divan')">
+                        <div class="product-img-wrapper"><img src="guzgusaat.png" alt="Divan"></div>
+                        <h5 class="fw-bold">Saat Güzgüsü</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Puff')">
+                        <div class="product-img-wrapper"><img src="radiatorguzgu.png" alt="Puff"></div>
+                        <h5 class="fw-bold">Radiator Güzgüsü</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Jurnalni')">
+                        <div class="product-img-wrapper"><img src="jurnalniguzgu.jpeg
+                            " alt="Jurnalni"></div>
+                        <h5 class="fw-bold">Jurnalni Güzgüsü</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Gözəllik Salonu')">
+                        <div class="product-img-wrapper"><img src="moydadirguzgu.png" alt="Gözəllik"></div>
+                        <h5 class="fw-bold">Moydadır Güzgüsü</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- sebeke -->
+    <section id="sebeke" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5 reveal">
+                <h2 class="display-5 fw-bold" style="color: #b08d75;">Şəbəkə</h2>
+                <div class="section-divider mt-3"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Mətbəx')">
+                        <div class="product-img-wrapper"><img src="arakesmesebeke2.png" alt="Mətbəx"></div>
+                        <h5 class="fw-bold">Ara Kəsmə</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Yataq Dəsti')">
+                        <div class="product-img-wrapper"><img src="surgulusebeke.png" alt="Yataq"></div>
+                        <h5 class="fw-bold">Sürgülü</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Qonaq Dəsti')">
+                        <div class="product-img-wrapper"><img src="tavansebeke2.png" alt="Qonaq"></div>
+                        <h5 class="fw-bold">Tavan</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Uşaq Mebeli')">
+                        <div class="product-img-wrapper"><img src="penceresebeke.png" alt="Uşaq"></div>
+                        <h5 class="fw-bold">Pəncərə</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('TV Stendi')">
+                        <div class="product-img-wrapper"><img src="radiatorsebeke.png" alt="TV"></div>
+                        <h5 class="fw-bold">Radiator</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Qarderob')">
+                        <div class="product-img-wrapper"><img src="perdeliksebeke2.png" alt="Qarderob"></div>
+                        <h5 class="fw-bold">Pərdəlik</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Qapı')">
+                        <div class="product-img-wrapper"><img src="cilciraqsebeke.png" alt="Qapı"></div>
+                        <h5 class="fw-bold">Çılçıraq</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 reveal">
+                    <div class="product-frame text-center" onclick="openOrderModal('Divan')">
+                        <div class="product-img-wrapper"><img src="decorsebeke.png" alt="Divan"></div>
+                        <h5 class="fw-bold">Dekor</h5>
+                        <div class="product-overlay"><button class="btn-order">Daha Ətraflı</button></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- ─── YENİ: MÜŞTƏRİ RƏYLƏRİ ─── -->
+    <!-- ═══════════════════════════════════════ -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5 reveal">
+                <p class="text-uppercase fw-bold small" style="color:var(--accent); letter-spacing:3px;">Müştərilərimiz
+                    Danışır</p>
+                <h2 class="display-5 fw-bold">Rəylər & Qiymətləndirmələr</h2>
+                <div class="section-divider mt-3"></div>
+            </div>
+
+            <div class="row g-4 align-items-start">
+                <!-- Rating Summary -->
+                <div class="col-lg-3 reveal-left">
+                    <div class="rating-summary">
+                        <div class="big-rating">4.9</div>
+                        <div class="star-rating my-2" style="font-size:1.2rem;">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </div>
+                        <p class="text-muted small mb-4">10000+ müştəri rəyinə əsasən</p>
+
+                        <div class="rating-bar-wrap">
+                            <span class="rating-bar-label">5 ⭐</span>
+                            <div class="rating-bar-bg">
+                                <div class="rating-bar-fill" style="width:0%" data-width="88%"></div>
+                            </div>
+                            <span class="rating-bar-label" style="text-align:right">88%</span>
+                        </div>
+                        <div class="rating-bar-wrap">
+                            <span class="rating-bar-label">4 ⭐</span>
+                            <div class="rating-bar-bg">
+                                <div class="rating-bar-fill" style="width:0%" data-width="9%"></div>
+                            </div>
+                            <span class="rating-bar-label" style="text-align:right">9%</span>
+                        </div>
+                        <div class="rating-bar-wrap">
+                            <span class="rating-bar-label">3 ⭐</span>
+                            <div class="rating-bar-bg">
+                                <div class="rating-bar-fill" style="width:0%" data-width="2%"></div>
+                            </div>
+                            <span class="rating-bar-label" style="text-align:right">2%</span>
+                        </div>
+                        <div class="rating-bar-wrap">
+                            <span class="rating-bar-label">2 ⭐</span>
+                            <div class="rating-bar-bg">
+                                <div class="rating-bar-fill" style="width:0%" data-width="1%"></div>
+                            </div>
+                            <span class="rating-bar-label" style="text-align:right">1%</span>
+                        </div>
+                        <div class="rating-bar-wrap">
+                            <span class="rating-bar-label">1 ⭐</span>
+                            <div class="rating-bar-bg">
+                                <div class="rating-bar-fill" style="width:0%" data-width="0%"></div>
+                            </div>
+                            <span class="rating-bar-label" style="text-align:right">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Cards -->
+                <div class="col-lg-9">
+                    <div class="row g-4">
+                        <div class="col-md-6 reveal">
+                            <div class="testimonial-card">
+                                <div class="quote-icon">"</div>
+                                <div class="star-rating"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                                <p class="testimonial-text">Dekorchu-dan mətbəx sifariş etdim. Keyfiyyət inanılmaz
+                                    dərəcədə yüksəkdir, tam istəyimə uyğun hazırladılar. Ustaları çox peşəkardır,
+                                    vaxtında quraşdırdılar.</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">TM</div>
+                                    <div>
+                                        <p class="author-name">Tural Məmmədov</p>
+                                        <p class="author-location">Bakı, Nərimanov</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 reveal">
+                            <div class="testimonial-card">
+                                <div class="quote-icon">"</div>
+                                <div class="star-rating"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                                <p class="testimonial-text">Yataq dəsti o qədər gözəl çıxdı ki, qonaqlarım heyran qaldı.
+                                    Fərdi dizayn seçimi çox xoşuma gəldi, hər detalı fikirləşiblər. Mütləq tövsiyə
+                                    edirəm!</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">RH</div>
+                                    <div>
+                                        <p class="author-name">Rauf Həsənov</p>
+                                        <p class="author-location">Bakı, Sabunçu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 reveal">
+                            <div class="testimonial-card">
+                                <div class="quote-icon">"</div>
+                                <div class="star-rating"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></div>
+                                <p class="testimonial-text">Qonaq otağı üçün divan və jurnalni masası sifariş etdik.
+                                    Material seçimindən tutmuş çatdırılmaya qədər hər şey mükəmməl idi. Qiymət-keyfiyyət
+                                    nisbəti əla.</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">LA</div>
+                                    <div>
+                                        <p class="author-name">Lalə Abbasova</p>
+                                        <p class="author-location">Bakı, Xətai</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 reveal">
+                            <div class="testimonial-card">
+                                <div class="quote-icon">"</div>
+                                <div class="star-rating"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                                <p class="testimonial-text">Ofisimiz üçün gözəllik salonu mebeli aldıq. Müştərilərimiz
+                                    hər gün mebelin gözəlliyi barədə danışır. Dekorchu həqiqətən premium keyfiyyət
+                                    deməkdir.</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">AS</div>
+                                    <div>
+                                        <p class="author-name">Aysel Süleymanova</p>
+                                        <p class="author-location">Bakı, Səbail</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 reveal">
+                            <div class="testimonial-card">
+                                <div class="quote-icon">"</div>
+                                <div class="star-rating"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                                <p class="testimonial-text">Dekorchu-dan koridorum üçün güzgü sifariş etdim — çərçivəsi
+                                    əl işi, materialı premium idi. Evə gətirilən kimi hiss etdim ki, bu sadəcə güzgü
+                                    deyil, dekor elementidi. Otağın bütün görünüşünü dəyişdi. Ustalar yerləşdirərkən
+                                    divarın zədələnməməsi üçün özəl bərkitmədən istifadə etdilər. Belə diqqət görmürdüm
+                                    indiyə kimi! </p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">ŞQ</div>
+                                    <div>
+                                        <p class="author-name">Şəhla Quliyeva</p>
+                                        <p class="author-location">Bakı, Nizami</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 reveal">
+                            <div class="testimonial-card">
+                                <div class="quote-icon">"</div>
+                                <div class="star-rating"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                                <p class="testimonial-text">Qonaq otağım üçün tavan güzgüsü sifariş etdim Dekorchu-dan.
+                                    Düzünü deyim, əvvəlcə biraz tərəddüd etdim — tavan güzgüsü evə uyğun gələrmi deyə
+                                    düşündüm . Amma quraşdırandan sonra otaq elə genişləndi ki, inanılmaz. İşıq da çox
+                                    fərqli yayılır, otaq daha aydın və böyük görünür. Bərkidilməsi də çox etibarlıdır,
+                                    heç bir tərpənmə yoxdur. Tövsiyə edirəm!</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">NŞ</div>
+                                    <div>
+                                        <p class="author-name">Nəzrin Şərifli</p>
+                                        <p class="author-location">Bakı, Yasamal</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- ─── YENİ: FAQ ─── -->
+    <!-- ═══════════════════════════════════════ -->
+    <section id="faq">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5 reveal">
+                        <p class="text-uppercase fw-bold small" style="color:var(--accent); letter-spacing:3px;">Cavab
+                            Axtarırsınız?</p>
+                        <h2 class="display-5 fw-bold">Tez-tez Verilən Suallar</h2>
+                        <div class="section-divider mt-3"></div>
+                    </div>
+
+                    <div class="faq-item reveal">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Sifarişdən çatdırılmaya qədər nə qədər vaxt alır?
+                            <span class="faq-icon"><i class="bi bi-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Standart sifarişlər üçün istehsal və çatdırılma prosesi adətən 10–25 iş günü çəkir. Fərdi
+                                ölçülü və ya xüsusi materiallarla hazırlanmış sifarişlər üçün bu müddət bir qədər uzana
+                                bilər. Sifariş verdikdən sonra menecerimiz sizinlə əlaqə saxlayaraq dəqiq tarixi
+                                bildirəcək.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item reveal">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Ölçüləri özüm seçə bilərəmmi?
+                            <span class="faq-icon"><i class="bi bi-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Bəli! Dekorchu-da bütün məhsullar fərdi ölçülərə uyğun hazırlanır. Mütəxəssisimiz evinizə
+                                gəlib ölçü götürür, sizinlə dizayn və material barədə məsləhətləşir. Bu xidmət tamamilə
+                                pulsuzdur.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item reveal">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Hansı material seçimləri mövcuddur?
+                            <span class="faq-icon"><i class="bi bi-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Müştərilərimizə 50-dən çox material seçimi təqdim edirik: MDF, Laminat, Membran, Masif
+                                ağac növləri, PVC, Akrilik və daha çoxu. Hər material üçün rəng kataloqu ilə birlikdə
+                                nümunələrİ ofisimizə gəlib görə bilərsiniz.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item reveal">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Zəmanət şərtləriniz necədir?
+                            <span class="faq-icon"><i class="bi bi-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Bütün Dekorchu məhsullarına 3 illik istehsal zəmanəti verilir. Quraşdırma prosesindən
+                                sonrakı 30 gün ərzində hər hansı texniki problem yaranarsa, pulsuz aradan qaldırırıq.
+                                Müştəri məmnuniyyəti bizim prioritetimizdir.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item reveal">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Ödəniş necə həyata keçirilir?
+                            <span class="faq-icon"><i class="bi bi-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ödənişin 50%-i sifariş zamanı (beh olaraq), 30%-i işin icrası prosesində, qalan 20%-i isə
+                                iş tam təhvil verildikdən sonra həyata keçirilir.
+                                Nağd, bank köçürməsi və ya hissəli ödəniş (6–12 ay faizsiz) seçimləri mövcuddur.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item reveal">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Məhsullarınız rayonlara, eləcə də Avropanın müəyyən ölkələrinə çatdırılması həyata
+                            keçirilirmi?
+                            <span class="faq-icon"><i class="bi bi-plus"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Bəli, çatdırılma xidməti respublikanın bütün rayonlarını və Avropanın müəyyən ölkələrini
+                                əhatə edir. Bakı daxilində çatdırılma pulsuzdur. Rayon çatdırılması üçün əlavə ödəniş
+                                tətbiq edilə bilər — dəqiq məlumat üçün
+                                bizimlə əlaqə saxlayın.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CONTACT ─── -->
+    <div class="container">
+
+    </div>
+
+    <section id="contact" class="py-5" style="overflow-x: hidden;">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-5 reveal-left">
+                    <div class="bg-white p-5 rounded-4 shadow-sm h-100 border border-light">
+                        <h2 class="serif fw-bold mb-4">Bizimlə Əlaqə</h2>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control bg-light border-0 p-3" placeholder="Adınız">
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control bg-light border-0 p-3" placeholder="Email">
+                            </div>
+                            <div class="mb-4">
+                                <textarea class="form-control bg-light border-0 p-3" rows="4"
+                                    placeholder="Mesajınız"></textarea>
+                            </div>
+                            <button
+                                class="btn btn-dark w-100 py-3 rounded-pill text-uppercase fw-bold shadow">Göndər</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 reveal-right">
+                    <div class="rounded-4 overflow-hidden shadow-sm h-100"
+                        style="min-height: 450px; position: relative;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2885.1142349645606!2d49.81992717601348!3d40.46866607143126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDDCsDI4JzA3LjIiTiA0OcKwNDknMjEuMCJF!5e1!3m2!1sen!2saz!4v1773657860130!5m2!1sen!2saz"
+                            width="100%" height="100%" style="border:0; position: absolute; top:0; left:0;"
+                            allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="container">
+            <div class="row gy-5">
+                <div class="col-lg-3">
+                    <h2 class="text-white fw-bold mb-4">Dekorchu<span class="text-bronze"></span></h2>
+                    <p class="small opacity-50 mb-4">Sizin eviniz üçün ən yüksək sənət həlləri. Biz sadəliyin və
+                        keyfiyyətin gücünə inanırıq.</p>
+                    <div class="d-flex">
+                        <a href="https://www.instagram.com/dekorcu_n1/" class="social-btn"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="https://www.tiktok.com/dekorchu" class="social-btn"><i class="bi bi-tiktok"></i></a>
+                        <a href="https://wa.me/994553223202" class="social-btn"><i class="bi bi-whatsapp"></i></a>
+                        <a href="" class="social-btn"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <h5 class="footer-title">Kolleksiyalar</h5>
+                    <a href="#home" class="footer-link">Ana Səhifə</a>
+                    <a href="#about" class="footer-link">Hekayəmiz</a>
+                    <a href="#catalog" class="footer-link">Mebel</a>
+                    <a href="#guzgu" class="footer-link">Güzgü</a>
+                    <a href="#sebeke" class="footer-link">Şəbəkə</a>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="footer-title">Sürətli Keçid</h5>
+                    <a href="#testimonials" class="footer-link">Müştəri Rəyləri</a>
+                    <a href="#faq" class="footer-link">FAQ</a>
+                    <a href="#contact" class="footer-link">Əlaqə</a>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="footer-title">İş Saatlarımız</h5>
+                    <p class="small mb-1">Həftə içi 09:00 - 19:00</p>
+                    <p class="small">Şənbə 10:00 - 16:00</p>
+                    <p class="small"> Mob : +994 55 322 32 02</p>
+                </div>
+            </div>
+            <div class="border-top border-white border-opacity-10 mt-5 pt-4 text-center">
+                <p class="small opacity-50 mb-0">© 2026 Dekorchu Furniture Gallery. Bütün hüquqlar qorunur. Design by
+                    Elvira Gadirova</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ─── WHATSAPP ─── -->
+    <a href="https://wa.me/994553223202" class="whatsapp-button" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- ─── BACK TO TOP ─── -->
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- ─── YENİ: SİFARİŞ MODALI ─── -->
+    <!-- ═══════════════════════════════════════ -->
+    <!-- <div class="modal fade" id="orderModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalProductTitle">Sifariş et</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body modal-form">
+                    <p class="text-muted small mb-4">Formu doldurun, mütəxəssisimiz 24 saat ərzində sizinlə əlaqə
+                        saxlayacaq.</p>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Adınız Soyadınız" id="orderName">
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" class="form-control" placeholder="Telefon nömrəniz" id="orderPhone">
+                    </div>
+                    <div class="mb-4">
+                        <textarea class="form-control" rows="3"
+                            placeholder="Əlavə qeydlər (ölçü, rəng, xüsusi istək...)" id="orderNote"></textarea>
+                    </div>
+                    <button class="btn-submit-order" onclick="submitOrder()">
+                        <i class="bi bi-send me-2"></i> Sifariş Göndər
+                    </button>
+                    <p class="text-center text-muted mt-3" style="font-size:0.75rem;">
+                        və ya birbaşa <a href="https://wa.me/994704303303" target="_blank"
+                            style="color:var(--accent);">WhatsApp</a>-dan əlaqə saxlayın
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- ─── YENİ: PULSUZ KONSULTASİYA TOAST ─── -->
+    <!-- ═══════════════════════════════════════ -->
+    <div id="consultToast">
+        <button class="toast-close" onclick="this.parentElement.classList.remove('show')">×</button>
+        <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-chat-dots-fill me-2" style="color:var(--accent); font-size:1.1rem;"></i>
+            <p class="toast-title mb-0">Pulsuz Konsultasiya</p>
+        </div>
+        <p class="toast-text">Evinizdə ücretsiz ölçü götürmə xidmətindən yararlana bilərsiniz!</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ─── NAVBAR SCROLL ───
+        window.onscroll = function () {
+            var nav = document.querySelector('.navbar');
+            if (window.pageYOffset > 50) {
+                nav.style.width = "100%";
+                nav.style.maxWidth = "100%";
+                nav.style.left = "0";
+                nav.style.right = "0";
+                nav.style.margin = "0";
+                nav.style.borderRadius = "0";
+                nav.style.background = "rgba(255,255,255,0.95)";
+            } else {
+                nav.style.width = "90%";
+                nav.style.margin = "20px auto";
+                nav.style.borderRadius = "50px";
+                nav.style.background = "rgba(255,255,255,0.8)";
+            }
+            // Back to top button
+            var btn = document.getElementById('backToTop');
+            if (window.pageYOffset > 400) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        };
+
+        // ─── SCROLL REVEAL ───
+        var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    // Staggered delay for siblings
+                    var siblings = entry.target.parentElement.querySelectorAll('.reveal:not(.revealed)');
+                    var delay = 0;
+                    siblings.forEach(function (el) {
+                        el.style.transitionDelay = delay + 'ms';
+                        delay += 80;
+                    });
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
+            revealObserver.observe(el);
+        });
+
+        // ─── ANIMATED COUNTERS ───
+        var countersDone = false;
+        var counterObserver = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting && !countersDone) {
+                countersDone = true;
+                document.querySelectorAll('.counter').forEach(function (counter) {
+                    var target = parseInt(counter.getAttribute('data-target'));
+                    var suffix = target > 100 ? '+' : (target === 98 ? '%' : '+');
+                    var step = target / 60;
+                    var current = 0;
+                    var timer = setInterval(function () {
+                        current += step;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        counter.textContent = Math.floor(current) + suffix;
+                    }, 25);
+                });
+            }
+        }, { threshold: 0.5 });
+
+        var aboutSection = document.querySelector('#about');
+        if (aboutSection) counterObserver.observe(aboutSection);
+
+        // ─── RATING BARS ANIMATION ───
+        var barObserver = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) {
+                document.querySelectorAll('.rating-bar-fill').forEach(function (bar) {
+                    bar.style.width = bar.getAttribute('data-width');
+                });
+                barObserver.disconnect();
+            }
+        }, { threshold: 0.3 });
+
+        var testimonialsSection = document.querySelector('#testimonials');
+        if (testimonialsSection) barObserver.observe(testimonialsSection);
+
+        // ─── FAQ TOGGLE ───
+        function toggleFaq(btn) {
+            var answer = btn.nextElementSibling;
+            var isOpen = answer.classList.contains('open');
+
+            // Close all
+            document.querySelectorAll('.faq-answer').forEach(function (a) { a.classList.remove('open'); });
+            document.querySelectorAll('.faq-question').forEach(function (q) { q.classList.remove('open'); });
+
+            if (!isOpen) {
+                answer.classList.add('open');
+                btn.classList.add('open');
+            }
+        }
+
+        // ─── ORDER MODAL ───
+        function openOrderModal(productName) {
+            document.getElementById('modalProductTitle').textContent = productName + ' — Sifariş';
+            new bootstrap.Modal(document.getElementById('orderModal')).show();
+        }
+
+        function submitOrder() {
+            var name = document.getElementById('orderName').value.trim();
+            var phone = document.getElementById('orderPhone').value.trim();
+            if (!name || !phone) {
+                alert('Zəhmət olmasa adınızı və telefon nömrənizi daxil edin.');
+                return;
+            }
+            var product = document.getElementById('modalProductTitle').textContent.replace(' — Sifariş', '');
+            var note = document.getElementById('orderNote').value;
+            var msg = encodeURIComponent('Salam! Sifariş vermək istəyirəm.\nMəhsul: ' + product + '\nAd: ' + name + '\nTelefon: ' + phone + (note ? '\nQeyd: ' + note : ''));
+            window.open('https://wa.me/994704303303?text=' + msg, '_blank');
+            bootstrap.Modal.getInstance(document.getElementById('orderModal')).hide();
+        }
+
+        // ─── CONSULTATION TOAST ───
+        setTimeout(function () {
+            document.getElementById('consultToast').classList.add('show');
+            setTimeout(function () {
+                document.getElementById('consultToast').classList.remove('show');
+            }, 7000);
+        }, 4000);
+    </script>
+
+</body>
+
+</html>
